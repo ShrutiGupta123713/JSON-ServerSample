@@ -16,6 +16,7 @@ export class DishdetailComponent implements OnInit {
   dishIds: string[];
   prev: string;
   next: string;
+  dishCopy: Dish;
   constructor(private dishService: DishService,
     private route: ActivatedRoute,
     private location: Location) { }
@@ -25,7 +26,7 @@ export class DishdetailComponent implements OnInit {
       .subscribe(dishIds => this.dishIds = dishIds);
 
     this.route.params.pipe(switchMap((params: Params) => this.dishService.getDish(params['id'])))
-      .subscribe((dish) => {this.dish = dish;});
+      .subscribe((dish) => {this.dish = dish; this.dishCopy = dish;});
   }
 
   setPrevNext(dishId: string) {
