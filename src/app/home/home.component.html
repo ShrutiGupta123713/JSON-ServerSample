@@ -1,0 +1,76 @@
+<div class="container"
+     fxLayout="row"
+     fxLayout.sm="column"
+     fxLayout.xs="column"
+     fxLayoutAlign.gt-md="space-around center"
+     fxLayoutGap="10px">
+
+<mat-card *ngIf="dish" fxFlex>
+  <mat-card-header>
+    <div mat-card-avatar></div>
+    <mat-card-title>
+      <h3>{{dish.name | uppercase}}</h3>
+    </mat-card-title>
+  </mat-card-header>
+  <img mat-card-image src={{dish.image}} alt={{dish.name}}>
+  <mat-card-content>
+    <p>{{dish.description}}
+    </p>
+  </mat-card-content>
+</mat-card>
+<div fxFlex [hidden]="dish">
+  <mat-spinner></mat-spinner><h4>Loading ... Please Wait</h4>
+</div>
+
+<mat-card *ngIf="promotion" fxFlex>
+  <mat-card-header>
+    <div mat-card-avatar></div>
+    <mat-card-title>
+      <h3>{{promotion.name | uppercase}}</h3>
+    </mat-card-title>
+  </mat-card-header>
+  <img mat-card-image src={{promotion.image}} alt={{promotion.name}}>
+  <mat-card-content>
+    <p>{{promotion.description}}
+    </p>
+  </mat-card-content>
+</mat-card>
+<div fxFlex [hidden]="promotion">
+  <mat-spinner></mat-spinner><h4>Loading ... Please Wait</h4>
+</div>
+
+<mat-card *ngIf="leader" fxFlex>
+  <mat-card-header>
+    <div mat-card-avatar></div>
+    <mat-card-title>
+      <h3>{{leader.name | uppercase}}</h3>
+    </mat-card-title>
+  </mat-card-header>
+  <img mat-card-image src={{leader.image}} alt={{leader.name}}>
+  <mat-card-content>
+    <p>{{leader.description}}
+    </p>
+  </mat-card-content>
+</mat-card>
+<div fxFlex [hidden]="leader">
+  <mat-spinner></mat-spinner><h4>Loading ... Please Wait</h4>
+</div>
+</div>
+<br>
+<div class="container">
+    <div class="col-md-8 col-sm-12">
+          <div class="panel-heading">
+            Comment
+          </div>
+          <div class="panel-body">
+            <textarea class="form-control" id="shruti" placeholder="write a comment..." rows="5" cols="50" maxlength="100" (keyup)="calculateRemaining()"></textarea>
+            <p id="remaining"></p>
+            <br>
+            <button type="button" class="btn pull-right" mat-raised-button color="primary" (click)="post()"> Post </button>
+          </div>
+  </div>
+</div>
+<br>
+<div class="container" *ngIf ="commentValue">
+  <p>{{this.commentValue}}</p>
+</div>
